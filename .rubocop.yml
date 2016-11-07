@@ -1,0 +1,40 @@
+inherit_from: .rubocop_todo.yml
+
+Rails:
+  Enabled: true
+
+# Offense count: 25
+# Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives.
+# URISchemes: http, https
+Metrics/LineLength:
+  Max: 90
+
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - 'spec/controllers/regression/**/*'
+    - 'spec/models/regression/**/*'
+    - 'node_modules/**/*'
+    - 'bin/**/*'
+    - 'db/**/*'
+
+Style/IndentationConsistency:
+  Enabled: false
+
+Style/AlignHash:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyLinesAroundBlockBody:
+  Enabled: false
+
+Style/SignalException:
+  EnforcedStyle: semantic
+
+Style/AndOr:
+  EnforcedStyle: conditionals
