@@ -1,3 +1,7 @@
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
 # Ignore bundler config.
 /.bundle
 
@@ -9,6 +13,24 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+
+# Ignore other files and routes
+*.XML
+*.gz
+*.pem
 *.sublime-workspace
-database.yml
+coverage
+rubocop.html
+.sass-cache
 .vagrant
+config/application.yml*
+config/database.yml
+spec/test_files
+bower_components
+node_modules
+npm-debug.log
+database.yml
