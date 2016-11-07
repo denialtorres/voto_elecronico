@@ -3,6 +3,12 @@ inherit_from: .rubocop_todo.yml
 Rails:
   Enabled: true
 
+# Offense count: 25
+# Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives.
+# URISchemes: http, https
+Metrics/LineLength:
+  Max: 90
+
 AllCops:
   TargetRubyVersion: 2.3
   Exclude:
