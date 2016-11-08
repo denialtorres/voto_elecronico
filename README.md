@@ -5,20 +5,27 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
-
 * System dependencies
 
-* Configuration
+run `bundle install`
 
 * Database creation
 
-* Database initialization
+run `rake db:nuke`
+
+* Initialize development
+
+`vagrant up && vagrant ssh`
+
+Once inside vagrant run `cd /vagrant` and run `puma`.
+
+Then you can go to [localhost:3000](http://localhost:3000)
 
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+run `rspec spec`
 
 * Deployment instructions
 
-* ...
+run `mina deploy`
+

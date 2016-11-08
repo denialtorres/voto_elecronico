@@ -1,0 +1,30 @@
+#!/bin/sh
+
+sudo apt-get update
+
+echo "####### Installing node"
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install -y nodejs build-essential
+
+# echo "####### Removing unused dependencies"
+# sudo apt-get autoremove -y
+
+echo "####### Installing npm"
+sudo npm install -g npm
+
+echo "####### Installing bower"
+sudo npm install -g bower
+
+echo "####### Set locale"
+printf "\nexport LC_ALL=\"en_US.UTF-8\"\n" >> /home/vagrant/.bashrc
+
+echo "####### Installing ruby 2.3.1"
+echo 'gem: --no-document' >> ~/.gemrc
+rvm install ruby-2.1.2
+
+echo "####### Installing Mailcatcher"
+gem install mailcatcher
+
+echo "####### Start Mailcatcher"
+ps ax | grep mailcatcher | awk '{print $1}' | xargs kill -9
+`which mailcatcher`
