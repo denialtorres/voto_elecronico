@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @petition.name %>
+  <strong>Title:</strong>
+  <%= @petition.title %>
 </p>
 
 <p>
@@ -31,8 +31,8 @@
 </p>
 
 <p>
-  <strong>Callback hash:</strong>
-  <%= @petition.callback_hash %>
+  <strong>Callback token:</strong>
+  <%= @petition.callback_token %>
 </p>
 
 <%= link_to 'Edit', edit_petition_path(@petition) %> |

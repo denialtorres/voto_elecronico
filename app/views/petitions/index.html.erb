@@ -5,7 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Title</th>
       <th>Text</th>
       <th>Creator name</th>
       <th>Creator email</th>
@@ -19,13 +19,13 @@
   <tbody>
     <% @petitions.each do |petition| %>
       <tr>
-        <td><%= petition.name %></td>
+        <td><%= petition.title %></td>
         <td><%= petition.text %></td>
         <td><%= petition.creator_name %></td>
         <td><%= petition.creator_email %></td>
         <td><%= petition.private_fragment %></td>
         <td><%= petition.public_fragment %></td>
-        <td><%= petition.callback_hash %></td>
+        <td><%= petition.callback_token %></td>
         <td><%= link_to 'Show', petition %></td>
         <td><%= link_to 'Edit', edit_petition_path(petition) %></td>
         <td><%= link_to 'Destroy', petition, method: :delete, data: { confirm: 'Are you sure?' } %></td>

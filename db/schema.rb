@@ -16,15 +16,18 @@ ActiveRecord::Schema.define(version: 20161108035557) do
   enable_extension "plpgsql"
 
   create_table "petitions", force: :cascade do |t|
-    t.string   "name"
-    t.text     "text"
-    t.string   "creator_name"
-    t.string   "creator_email"
-    t.string   "private_fragment"
-    t.string   "public_fragment"
-    t.string   "callback_hash"
+    t.string   "title",            null: false
+    t.text     "text",             null: false
+    t.string   "creator_name",     null: false
+    t.string   "creator_email",    null: false
+    t.string   "private_fragment", null: false
+    t.string   "public_fragment",  null: false
+    t.string   "callback_token",   null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.index ["callback_token"], name: "index_petitions_on_callback_token", unique: true, using: :btree
+    t.index ["private_fragment"], name: "index_petitions_on_private_fragment", unique: true, using: :btree
+    t.index ["public_fragment"], name: "index_petitions_on_public_fragment", unique: true, using: :btree
   end
 
 end

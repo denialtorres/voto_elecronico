@@ -1,6 +1,5 @@
 class PetitionsController < ApplicationController
   before_action :set_petition, only: [:show, :edit, :update, :destroy]
-
   # GET /petitions
   def index
     @petitions = Petition.all
@@ -53,6 +52,6 @@ class PetitionsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def petition_params
-      params.require(:petition).permit(:name, :text, :creator_name, :creator_email, :private_fragment, :public_fragment, :callback_hash)
+      params.require(:petition).permit(:title, :text, :creator_name, :creator_email)
     end
 end
