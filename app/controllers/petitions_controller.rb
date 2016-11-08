@@ -1,12 +1,26 @@
 class PetitionsController < ApplicationController
-  before_action :set_petition, only: [:show, :edit, :update, :destroy]
+  before_action :set_petition, only: [:edit, :update, :destroy]
   # GET /petitions
   def index
     @petitions = Petition.all
   end
 
   # GET /petitions/1
+  # GET /petitions/public/:public_fragment
+  # GET /petitions/private/:private_fragment
   def show
+    page = 'show'
+
+    if request.path.match(/\/public\//)
+      @petition = Petition.find_by public_fragment: params[:public_fragment]
+    elsif request.path.match(/\/private\//)
+      @petition = Petition.find_by private_fragment: params[:private_fragment]
+      page = 'private'
+    else
+      set_petition
+    end
+
+    render page
   end
 
   # GET /petitions/new
