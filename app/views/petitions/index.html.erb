@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Petitions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Text</th>
+      <th>Creator name</th>
+      <th>Creator email</th>
+      <th>Private fragment</th>
+      <th>Public fragment</th>
+      <th>Callback hash</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @petitions.each do |petition| %>
+      <tr>
+        <td><%= petition.name %></td>
+        <td><%= petition.text %></td>
+        <td><%= petition.creator_name %></td>
+        <td><%= petition.creator_email %></td>
+        <td><%= petition.private_fragment %></td>
+        <td><%= petition.public_fragment %></td>
+        <td><%= petition.callback_hash %></td>
+        <td><%= link_to 'Show', petition %></td>
+        <td><%= link_to 'Edit', edit_petition_path(petition) %></td>
+        <td><%= link_to 'Destroy', petition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Petition', new_petition_path %>

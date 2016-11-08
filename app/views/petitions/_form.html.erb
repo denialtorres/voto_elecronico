@@ -1,0 +1,52 @@
+<%= form_for(petition) do |f| %>
+  <% if petition.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(petition.errors.count, "error") %> prohibited this petition from being saved:</h2>
+
+      <ul>
+      <% petition.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :text %>
+    <%= f.text_area :text %>
+  </div>
+
+  <div class="field">
+    <%= f.label :creator_name %>
+    <%= f.text_field :creator_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :creator_email %>
+    <%= f.text_field :creator_email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :private_fragment %>
+    <%= f.text_field :private_fragment %>
+  </div>
+
+  <div class="field">
+    <%= f.label :public_fragment %>
+    <%= f.text_field :public_fragment %>
+  </div>
+
+  <div class="field">
+    <%= f.label :callback_hash %>
+    <%= f.text_field :callback_hash %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

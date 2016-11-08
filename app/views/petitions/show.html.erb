@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @petition.name %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @petition.text %>
+</p>
+
+<p>
+  <strong>Creator name:</strong>
+  <%= @petition.creator_name %>
+</p>
+
+<p>
+  <strong>Creator email:</strong>
+  <%= @petition.creator_email %>
+</p>
+
+<p>
+  <strong>Private fragment:</strong>
+  <%= @petition.private_fragment %>
+</p>
+
+<p>
+  <strong>Public fragment:</strong>
+  <%= @petition.public_fragment %>
+</p>
+
+<p>
+  <strong>Callback hash:</strong>
+  <%= @petition.callback_hash %>
+</p>
+
+<%= link_to 'Edit', edit_petition_path(@petition) %> |
+<%= link_to 'Back', petitions_path %>
