@@ -1,39 +1,19 @@
-<p id="notice"><%= notice %></p>
+<div id="content">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @petition.title %>
-</p>
+  <h1>
+    <%= @petition.title %>
+  </h1>
 
-<p>
-  <strong>Text:</strong>
-  <%= @petition.text %>
-</p>
+  <h3>
+    <%= @petition.creator_name %>
+  </h3>
 
-<p>
-  <strong>Creator name:</strong>
-  <%= @petition.creator_name %>
-</p>
+  <p>
+    <%= @petition.text %>
+  </p>
 
-<p>
-  <strong>Creator email:</strong>
-  <%= @petition.creator_email %>
-</p>
+  <%= link_to 'Edit', edit_petition_path(@petition) %> |
+  <%= link_to 'Back', petitions_path %>
+</div>
 
-<p>
-  <strong>Private fragment:</strong>
-  <%= @petition.private_fragment %>
-</p>
-
-<p>
-  <strong>Public fragment:</strong>
-  <%= @petition.public_fragment %>
-</p>
-
-<p>
-  <strong>Callback token:</strong>
-  <%= @petition.callback_token %>
-</p>
-
-<%= link_to 'Edit', edit_petition_path(@petition) %> |
-<%= link_to 'Back', petitions_path %>
