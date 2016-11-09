@@ -36,5 +36,8 @@ module VotoElectronico
       end
       opts
     }
+
+    # Host for generates URLs on emails
+    config.action_mailer.default_url_options = { host: ENV['default_url_host'] }
   end
 end
