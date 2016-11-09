@@ -1,19 +1,8 @@
+<p id="notice"><%= notice %></p>
+
 <div id="content">
-  <p id="notice"><%= notice %></p>
+  <%= render 'info' %>
 
-  <h1>
-    <%= @petition.title %>
-  </h1>
-
-  <h3>
-    <%= @petition.creator_name %>
-  </h3>
-
-  <p>
-    <%= @petition.text %>
-  </p>
-
-  <%= link_to 'Edit', edit_petition_path(@petition) %> |
   <%= link_to 'Back', petitions_path %>
 </div>
 
