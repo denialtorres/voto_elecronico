@@ -2,6 +2,8 @@
 
 <h1>Petitions</h1>
 
+<%= link_to 'New Petition', new_petition_path %>
+
 <div>
 <% @petitions.each do |petition| %>
     <div class='petition title'><h3><%= petition.title %></h3></div>

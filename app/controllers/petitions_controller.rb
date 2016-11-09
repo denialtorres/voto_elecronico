@@ -37,7 +37,7 @@ class PetitionsController < ApplicationController
     @petition = Petition.new(petition_params)
 
     if @petition.save
-      redirect_to @petition, notice: 'Petition was successfully created.'
+      render :private, notice: 'Petition was successfully created.'
     else
       render :new
     end
