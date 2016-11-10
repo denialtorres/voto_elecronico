@@ -33,3 +33,4 @@ bower_components
 node_modules
 npm-debug.log
 database.yml
+*.sublime-workspace
