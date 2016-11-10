@@ -2,28 +2,22 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 
-# Use postgres as the database for Active Record
-gem 'pg'
-gem 'puma'
 
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'pg'# Use postgres as the database for Active Record
+gem 'puma' # Web server
 
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
+gem 'sass-rails', '~> 5.0' # Use SCSS for stylesheets
+gem 'bootstrap-sass', '~> 3.3.6' # HTML, CSS, and JS framework
+gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
+gem 'coffee-rails', '~> 4.2' # Use CoffeeScript for .coffee assets and views
+gem 'jquery-rails' # Use jquery as the JavaScript library
+gem 'turbolinks', '~> 5' # Faster application browsing
+gem 'api-auth' # HMAC authentication for Rails and HTTP Clients
+gem 'figaro' # Load environment variable variables
+gem 'sitemap_generator' # Creates sitemaps and pings search engine
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
-
-# Turbolinks makes navigating your web application faster.
-# Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
@@ -31,49 +25,26 @@ gem 'turbolinks', '~> 5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 
-# Creates sitemaps and pings search engine
-gem 'sitemap_generator'
-
-# HMAC authentication for Rails and HTTP Clients
-gem 'api-auth'
-
-# Load environment variable variables
-gem 'figaro'
-
 # Console and Logging
 #------------------------------------------------------------------------------
 
-# Makes pry the defualt REPL for 'rails console'
-gem 'pry-rails'
-
-# Less spammy logging
-gem 'lograge'
+gem 'pry-rails' # Makes pry the defualt REPL for 'rails console'
+gem 'lograge' # Less spammy logging
 
 group :production do
-  # Rack HTTP server for fast clients and Unix
-  gem 'unicorn'
-
-  # New Relic tracks
-  gem 'newrelic_rpm'
+  gem 'unicorn' # Rack HTTP server for fast clients and Unix
+  gem 'newrelic_rpm' # New Relic tracks
 end
 
 group :development, :test do
-  # RSpec for Rails-3+
-  gem 'rspec-rails', '~> 3.5'
-
-  # Call 'byebug' anywhere in the code to stop
-  # execution and get a debugger console
-  gem 'byebug', platform: :mri
+  gem 'byebug', platform: :mri # Console debugger
 end
 
 group :test do
-  # Factory Girl
-  gem 'factory_girl_rails', require: false
-
-  # Library for stubbing and setting expectations on HTTP requests in Ruby.
-  gem 'webmock'
-  # Code coverage for Ruby
-  gem 'simplecov', require: false
+  gem 'factory_girl_rails', require: false # Database fixtures
+  gem 'rspec-rails', '~> 3.5' # Rails test framework
+  gem 'webmock' # Stubbing and expectations on HTTP requests.
+  gem 'simplecov', require: false # Code coverage for Ruby
 end
 
 group :development do

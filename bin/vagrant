@@ -20,7 +20,7 @@ printf "\nexport LC_ALL=\"en_US.UTF-8\"\n" >> /home/vagrant/.bashrc
 
 echo "####### Installing ruby 2.3.1"
 echo 'gem: --no-document' >> ~/.gemrc
-rvm install ruby-2.1.2
+rvm install ruby-2.3.1
 
 echo "####### Installing Mailcatcher"
 gem install mailcatcher

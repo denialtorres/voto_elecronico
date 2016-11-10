@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Petitions</h1>
+
+<div>
+<% @petitions.each do |petition| %>
+    <div class='petition title'><h3><%= petition.title %></h3></div>
+    <div class='petition creator-name'><%= petition.creator_name %></div>
+    <div class='petition creator-email'><%= petition.creator_email %></div>
+    <div class='petition text'><%= petition.text.slice(0,100) + '...' %></div>
+    <div class='petition private-fragment'><%= petition.private_fragment %></div>
+    <div class='petition public-fragment'><%= petition.public_fragment %></div>
+    <div class='petition callback-token'><%= petition.callback_token %></div>
+    <div class='petition'>
+      <ul class='links'>
+        <li><%= link_to 'Show', petition %></li>
+        <li><%= link_to 'Edit', edit_petition_path(petition) %></li>
+        <li><%= link_to 'Destroy', petition, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+      </ul>
+    </div>
+<% end %>
+</div>
+
+<br>
+
+<%= link_to 'New Petition', new_petition_path %>

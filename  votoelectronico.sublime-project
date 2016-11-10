@@ -8,7 +8,7 @@
         ".DS_Store",
         "*.orig",
         "rubocop.html",
-        "*.sublime-workspace",
+        "*.sublimeworkspace",
       ],
       "folder_exclude_patterns":
       [
