@@ -22,7 +22,6 @@
 *.XML
 *.gz
 *.pem
-*.sublime-workspace
 coverage
 rubocop.html
 .sass-cache
