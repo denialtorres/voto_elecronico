@@ -14,6 +14,7 @@ gem 'jquery-rails' # Use jquery as the JavaScript library
 gem 'turbolinks', '~> 5' # Faster application browsing
 gem 'api-auth' # HMAC authentication for Rails and HTTP Clients
 gem 'figaro' # Load environment variable variables
+gem 'sitemap_generator' # Creates sitemaps and pings search engine
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
