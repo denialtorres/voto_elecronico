@@ -19,12 +19,8 @@ echo "####### Set locale"
 printf "\nexport LC_ALL=\"en_US.UTF-8\"\n" >> /home/vagrant/.bashrc
 
 echo "####### Installing ruby 2.3.1"
-<<<<<<< e04cb7c8ccf6c1774a748ffc171a43a109f1c757
 echo 'gem: --no-document' >> ~/.gemrc
-rvm install ruby-2.1.2
-=======
 rvm install ruby-2.3.1
->>>>>>> MIFMN-58 #time 5m Added Vagrant configuration.
 
 echo "####### Installing Mailcatcher"
 gem install mailcatcher
