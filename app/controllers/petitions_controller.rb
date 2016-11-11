@@ -43,7 +43,7 @@ class PetitionsController < ApplicationController
     @petition = Petition.new(petition_params)
     if @petition.save
       PetitionMailer.petition_successfully_created(@petition.id).deliver_now
-      render :private, notice: 'Petition was successfully created.'
+      redirect_to private_petition_path(@petition.private_fragment), notice: 'Petition was successfully created.'
     else
       render :new
     end
