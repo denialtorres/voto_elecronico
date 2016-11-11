@@ -4,12 +4,13 @@ class PetitionsController < ApplicationController
     :update,
     :destroy,
     :publish,
+    :close,
     :show_signers
   ]
 
   # GET /petitions
   def index
-    @petitions = Petition.published
+    @petitions = Petition.published.not_closed
   end
 
   # GET /petitions/1
@@ -53,6 +54,13 @@ class PetitionsController < ApplicationController
 
     redirect_to private_petition_path(@petition.private_fragment),
                 notice: 'Petición publicada'
+  end
+
+  def close
+    @petition.close
+
+    redirect_to private_petition_path(@petition.private_fragment),
+                notice: 'Petición cerrada'
   end
 
   # PATCH/PUT /petitions/1

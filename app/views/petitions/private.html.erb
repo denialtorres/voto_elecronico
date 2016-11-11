@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <div id="content">
-  <% unless @petition.published? %>
+  <% if @petition.published? %>
+    <%= link_to 'Cerrar', petition_close_path(@petition.private_fragment), method: :post %>
+  <% else %>
     <%= link_to 'Publicar', petition_publish_path(@petition.private_fragment), method: :post %>
   <% end %>
   <%= render 'info' %>

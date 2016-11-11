@@ -4,9 +4,14 @@ class Petition < ApplicationRecord
   has_secure_token :callback_token
 
   scope :published, -> { where.not(published_at: nil) }
+  scope :not_closed, -> { where(closed_at: nil) }
 
   def publish
     update_attribute(:published_at, Time.now.utc)
+  end
+
+  def close
+    update_attribute(:closed_at, Time.now.utc)
   end
 
   def published?
