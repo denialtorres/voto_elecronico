@@ -59,7 +59,8 @@ group :development do
   gem 'mina-sitemap_generator', require: false
 
   gem 'guard'
-  gem 'guard-rubocop'
+  gem 'guard-rubocop', require: false
   gem 'guard-livereload', require: false
   gem 'guard-rspec', require: false
+  gem 'terminal-notifier-guard', require: false
 end
