@@ -23,6 +23,9 @@ ActiveRecord::Schema.define(version: 20161108035557) do
     t.string   "private_fragment", null: false
     t.string   "public_fragment",  null: false
     t.string   "callback_token",   null: false
+    t.datetime "deleted_at"
+    t.datetime "published_at"
+    t.datetime "closed_at"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.index ["callback_token"], name: "index_petitions_on_callback_token", unique: true, using: :btree

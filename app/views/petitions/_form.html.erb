@@ -1,4 +1,4 @@
-<%= form_for(petition) do |f| %>
+<%= form_for(petition, url: @url) do |f| %>
   <% if petition.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(petition.errors.count, "error") %> prohibited this petition from being saved:</h2>
@@ -11,24 +11,26 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <p><%= f.label :title %></p>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <p><%= f.label :text %></p>
-    <%= f.text_area :text %>
+    <%= f.text_area :text, class: 'form-control', rows: 12 %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :creator_name %>
-    <%= f.text_field :creator_name %>
+    <%= f.text_field :creator_name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
     <%= f.label :creator_email %>
-    <%= f.text_field :creator_email %>
+    <%= f.text_field :creator_email, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <button class="btn btn-info" type="submit">Enviar</button>
   </div>
 <% end %>

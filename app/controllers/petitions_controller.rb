@@ -1,8 +1,15 @@
 class PetitionsController < ApplicationController
-  before_action :set_petition, only: [:edit, :update, :destroy]
+  before_action :set_petition, only: [
+    :edit,
+    :update,
+    :destroy,
+    :publish,
+    :show_signers
+  ]
+
   # GET /petitions
   def index
-    @petitions = Petition.all
+    @petitions = Petition.published
   end
 
   # GET /petitions/1
@@ -10,14 +17,11 @@ class PetitionsController < ApplicationController
   # GET /petitions/private/:private_fragment
   def show
     page = 'show'
-
-    if request.path.match(/\/public\//)
-      @petition = Petition.find_by public_fragment: params[:public_fragment]
-    elsif request.path.match(/\/private\//)
-      @petition = Petition.find_by private_fragment: params[:private_fragment]
+    if request.path =~ %r{\/private\/}
+      @petition = Petition.find_by(private_fragment: params[:private_fragment])
       page = 'private'
     else
-      set_petition
+      @petition = Petition.find_by(public_fragment: params[:id])
     end
 
     render page
@@ -30,12 +34,12 @@ class PetitionsController < ApplicationController
 
   # GET /petitions/1/edit
   def edit
+    @url = { id: petition.private_fragment }
   end
 
   # POST /petitions
   def create
     @petition = Petition.new(petition_params)
-
     if @petition.save
       PetitionMailer.petition_successfully_created(@petition.id).deliver_now
       render :private, notice: 'Petition was successfully created.'
@@ -44,12 +48,20 @@ class PetitionsController < ApplicationController
     end
   end
 
+  def publish
+    @petition.publish
+
+    redirect_to private_petition_path(@petition.private_fragment),
+                notice: 'Petición publicada'
+  end
+
   # PATCH/PUT /petitions/1
   def update
     if @petition.update(petition_params)
-      redirect_to @petition, notice: 'Petition was successfully updated.'
+      redirect_to private_petition_path(@petition.private_fragment),
+                  notice: 'Petition was successfully updated.'
     else
-      render :edit
+      render :edit, id: @petition.private_fragment
     end
   end
 
@@ -60,9 +72,12 @@ class PetitionsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_petition
-      @petition = Petition.find(params[:id])
+      @petition = Petition.find_by(
+        private_fragment: (params[:id] || params[:petition_id])
+      )
     end
 
     # Only allow a trusted parameter "white list" through.

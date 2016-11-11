@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <div id="content">
+  <% unless @petition.published? %>
+    <%= link_to 'Publicar', petition_publish_path(@petition.private_fragment), method: :post %>
+  <% end %>
   <%= render 'info' %>
 
   <p>
@@ -10,14 +13,18 @@
 
   <p>
     Este es el link que tienes que compartir para que la gente firme tu petición, compártelo con quién tu quieras.<br />
-    <strong>Link Público: <%= public_petition_url(@petition.public_fragment) %></strong>
+    <strong>Link Público: <%= petition_path(@petition.public_fragment) %></strong>
   </p>
 
   <p>
    El siguiente es el link para que puedas monitorear el avance de tu petición y bajar la lista de firmantes. No compartas este link con nadie.<br />
-    <strong>Link Privado: <%= private_petition_url(@petition.private_fragment) %></strong>
+    <strong>Link Privado: <%= private_petition_path(@petition.private_fragment) %></strong>
   </p>
 
-  <%= link_to 'Edit', edit_petition_path(@petition) %> |
-  <%= link_to 'Back', petitions_path %>
+  <% if @petition.published? %>
+    <%= link_to 'Ver firmantes', petition_show_signers_path(@petition.private_fragment) %> |
+  <% else %>
+    <%= link_to 'Edit', edit_petition_path(@petition.private_fragment) %> |
+  <% end %>
+  <%= link_to 'Back', root_path %>
 </div>

@@ -8,7 +8,9 @@ class CreatePetitions < ActiveRecord::Migration[5.0]
       t.string :private_fragment, null: false, unique: true
       t.string :public_fragment,  null: false, unique: true
       t.string :callback_token,   null: false, unique: true
-
+      t.timestamp :deleted_at, null: true
+      t.timestamp :published_at, null: true
+      t.timestamp :closed_at, null: true
       t.timestamps
     end
 

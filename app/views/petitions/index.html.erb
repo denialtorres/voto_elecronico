@@ -1,28 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <p id="notice"><%= notice %></p>
 
-<h1>Petitions</h1>
+  <h1>Peticiones</h1>
 
-<%= link_to 'New Petition', new_petition_path %>
-
-<div>
-<% @petitions.each do |petition| %>
-    <div class='petition title'><h3><%= petition.title %></h3></div>
-    <div class='petition creator-name'><%= petition.creator_name %></div>
-    <div class='petition creator-email'><%= petition.creator_email %></div>
-    <div class='petition text'><%= petition.text.slice(0,100) + '...' %></div>
-    <div class='petition private-fragment'><%= petition.private_fragment %></div>
-    <div class='petition public-fragment'><%= petition.public_fragment %></div>
-    <div class='petition callback-token'><%= petition.callback_token %></div>
-    <div class='petition'>
-      <ul class='links'>
-        <li><%= link_to 'Show', petition %></li>
-        <li><%= link_to 'Edit', edit_petition_path(petition) %></li>
-        <li><%= link_to 'Destroy', petition, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-      </ul>
-    </div>
-<% end %>
+  <%= link_to 'Nueva petición', new_petition_path, class: 'btn btn-info' %>
 </div>
 
-<br>
+<div class="row">
+  <div class="petition">
+  <% @petitions.each do |petition| %>
+    <h3>
+      <%= link_to petition.title, petition_path(petition.public_fragment) %>
+    </h3>
+    <div class='text'><%= petition.text.slice(0, 200) + '...' %></div>
+    <% if Rails.env.development? %>
+      <%= link_to 'private link', private_petition_path(petition.private_fragment) %>
+    <% end %>
+  <% end %>
+  </div>
+</div>
 
-<%= link_to 'New Petition', new_petition_path %>
+<% if @petitions.count > 5 %>
+  <div class="row">
+    <br>
+    <%= link_to 'Nueva petición', new_petition_path, class: 'btn btn-info' %>
+  </div>
+<% end %>
