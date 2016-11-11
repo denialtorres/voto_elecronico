@@ -7,6 +7,7 @@ class Petition < ApplicationRecord
   scope :not_closed, -> { where(closed_at: nil) }
 
   def publish
+    create_mifiel_document
     update_attribute(:published_at, Time.now.utc)
   end
 
@@ -40,5 +41,24 @@ class Petition < ApplicationRecord
         random_token = SecureRandom.uuid
         break random_token unless self.class.exists?(private_fragment: random_token)
       end
+    end
+
+    def create_mifiel_document
+      path = "./tmp/#{encode_title}.txt"
+      File.open(path, 'w') { |f| f.write(text) }
+      callback_url = Rails.application.routes.url_helpers.petition_callback_url(
+        host: ENV['HOST'],
+        token: callback_token
+      )
+      document = Mifiel::Document.create(
+        file: path,
+        signatories: [],
+        callback_url: callback_url,
+        allow_infinite_signers: true
+      )
+      update_attribute(:widget_id, document.widget_id)
+    rescue RestClient::UnprocessableEntity => e
+      Rails.logger.error(e)
+      errors.add :base, 'Por favor intenta más tarde'
     end
 end
