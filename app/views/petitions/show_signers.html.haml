@@ -1,0 +1,18 @@
+%h1 Firmantes
+%h2 Petición: #{@petition.title}
+.row
+  .col-xs-12
+    %table.table.table-striped
+      %tr
+        %th Nombre
+        %th RFC
+        %th Firmado
+      - @petition.signers.each do |signer|
+        %tr
+          %td= signer.name
+          %td= signer.tax_id
+          %td= signer.signature ? 'si' : 'no'
+%br/
+= link_to 'Descargar Firmantes', private_petition_path(@petition.private_fragment)
+|
+= link_to 'Regresar a la petición', private_petition_path(@petition.private_fragment)
