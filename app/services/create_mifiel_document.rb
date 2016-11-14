@@ -1,9 +1,9 @@
 class CreateMifielDocument
-  attr_reader :callback_token,
+  attr_reader :petition,
               :errors
 
-  def initialize(callback_token)
-    @callback_token = callback_token
+  def initialize(petition)
+    @petition = petition
   end
 
   def perform
@@ -26,15 +26,15 @@ class CreateMifielDocument
   private
 
     def file_path
-      path = "./tmp/#{encode_title}.txt"
-      File.open(path, 'w') { |f| f.write(text) }
+      path = "./tmp/#{petition.encode_title}.txt"
+      File.open(path, 'w') { |f| f.write(petition.text) }
       path
     end
 
     def callback_url
       Rails.application.routes.url_helpers.petition_callback_url(
         host: ENV['HOST'],
-        token: callback_token
+        token: petition.callback_token
       )
     end
 end

@@ -29,14 +29,14 @@ class Petition < ApplicationRecord
     closed_at.present?
   end
 
+  def encode_title
+    clean_title.tr(' ', '-').slice(0, 49).chomp('-').downcase
+  end
+
   private
 
     def clean_title
       I18n.transliterate(title).split.map { |w| w.gsub(/\W+/, '') }.join(' ')
-    end
-
-    def encode_title
-      clean_title.tr(' ', '-').slice(0, 49).chomp('-').downcase
     end
 
     def set_public_url_fragment
@@ -54,7 +54,7 @@ class Petition < ApplicationRecord
     end
 
     def create_mifiel_document
-      service = CreateMifielDocument.new(callback_token)
+      service = CreateMifielDocument.new(self)
       doc = service.perform
       if doc && doc.widget_id
         update_attribute(:widget_id, doc.widget_id)
