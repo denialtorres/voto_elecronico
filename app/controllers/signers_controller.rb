@@ -30,6 +30,7 @@ class SignersController < ApplicationController
     def signer_params
       @signer_params ||= params.require(:signer).permit(
         :name,
+        :email,
         :last_name,
         :second_name,
         :tax_id,
