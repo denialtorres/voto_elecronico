@@ -8,6 +8,9 @@ class Petition < ApplicationRecord
   scope :published, -> { where.not(published_at: nil) }
   scope :not_closed, -> { where(closed_at: nil) }
 
+  validates :text, length: { minimum: 60 }, presence: true
+  validates :title, presence: true
+
   def publish
     return false unless create_mifiel_document
     update_attribute(:published_at, Time.now.utc)
@@ -19,6 +22,10 @@ class Petition < ApplicationRecord
 
   def published?
     published_at.present?
+  end
+
+  def closed?
+    closed_at.present?
   end
 
   private

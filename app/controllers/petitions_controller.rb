@@ -35,7 +35,7 @@ class PetitionsController < ApplicationController
 
   # GET /petitions/1/edit
   def edit
-    @url = { id: petition.private_fragment }
+    @url = { id: @petition.private_fragment }
   end
 
   # POST /petitions
@@ -45,15 +45,18 @@ class PetitionsController < ApplicationController
       PetitionMailer.petition_successfully_created(@petition.id).deliver_now
       redirect_to private_petition_path(@petition.private_fragment), notice: 'Petition was successfully created.'
     else
-      render :new
+      render :new, alert: @petition.errors.full_messages
     end
   end
 
   def publish
-    @petition.publish
-
-    redirect_to private_petition_path(@petition.private_fragment),
-                notice: 'Petición publicada'
+    if @petition.publish
+      redirect_to private_petition_path(@petition.private_fragment),
+                  notice: 'Petición publicada'
+    else
+      redirect_to private_petition_path(@petition.private_fragment),
+                  alert: @petition.errors.full_messages.join(', ')
+    end
   end
 
   def close
