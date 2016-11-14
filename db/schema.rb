@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20161108035557) do
     t.string   "private_fragment", null: false
     t.string   "public_fragment",  null: false
     t.string   "callback_token",   null: false
+    t.string   "widget_id"
     t.datetime "deleted_at"
     t.datetime "published_at"
     t.datetime "closed_at"

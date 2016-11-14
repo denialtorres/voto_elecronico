@@ -22,4 +22,4 @@ petitions = [
   }
 ]
 
-petitions.create(petitions)
+Petition.create(petitions)

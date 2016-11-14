@@ -7,7 +7,7 @@ class Petition < ApplicationRecord
   scope :not_closed, -> { where(closed_at: nil) }
 
   def publish
-    create_mifiel_document
+    return false unless create_mifiel_document
     update_attribute(:published_at, Time.now.utc)
   end
 
@@ -59,6 +59,7 @@ class Petition < ApplicationRecord
       update_attribute(:widget_id, document.widget_id)
     rescue RestClient::UnprocessableEntity => e
       Rails.logger.error(e)
-      errors.add :base, 'Por favor intenta más tarde'
+      errors.add :base, JSON.parse(e.response)['errors']
+      false
     end
 end
