@@ -6,5 +6,4 @@ class PetitionMailer < ApplicationMailer
 
     mail(to: @petition.creator_email, subject: 'Tu petición ha sido creada')
   end
-
 end

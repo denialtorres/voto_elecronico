@@ -1,19 +1,19 @@
 require 'rails_helper'
 
-RSpec.describe "petitions/show", type: :view do
+RSpec.describe 'petitions/show', type: :view do
   before(:each) do
     @petition = assign(:petition, Petition.create!(
-      :name => "Name",
-      :text => "MyText",
-      :creator_name => "Creator Name",
-      :creator_email => "Creator Email",
-      :private_fragment => "Private Fragment",
-      :public_fragment => "Public Fragment",
-      :callback_hash => "Callback Hash"
+                                    name: 'Name',
+                                    text: 'MyText',
+                                    creator_name: 'Creator Name',
+                                    creator_email: 'Creator Email',
+                                    private_fragment: 'Private Fragment',
+                                    public_fragment: 'Public Fragment',
+                                    callback_hash: 'Callback Hash'
     ))
   end
 
-  it "renders attributes in <p>" do
+  it 'renders attributes in <p>' do
     render
     expect(rendered).to match(/Name/)
     expect(rendered).to match(/MyText/)

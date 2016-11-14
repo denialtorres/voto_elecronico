@@ -37,5 +37,4 @@ class CreateMifielDocument
         token: callback_token
       )
     end
-
 end
