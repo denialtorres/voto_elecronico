@@ -1,8 +1,8 @@
-<p id="notice"><%= notice %></p>
+<%= link_to 'Regresar', root_path %>
 
 <div id="content">
   <%= render 'info' %>
 
-  <%= link_to 'Back', root_path %>
+  <%= link_to 'Firmar petición', new_petition_signer_path(petition_id: @petition.public_fragment) %>
 </div>
 
