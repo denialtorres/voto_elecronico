@@ -3,6 +3,8 @@ class Petition < ApplicationRecord
   before_create :set_public_url_fragment
   has_secure_token :callback_token
 
+  has_many :signers
+
   scope :published, -> { where.not(published_at: nil) }
   scope :not_closed, -> { where(closed_at: nil) }
 

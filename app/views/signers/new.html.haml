@@ -1,0 +1,44 @@
+%h1 Firmar Petición
+%h3= @petition.title
+= link_to 'Regresar', root_path
+
+= form_for(@signer, url: @url) do |f|
+  .row
+    .col-sm-12
+      - if @signer.errors.any?
+        #error_explanation
+          %h2
+            = pluralize(@signer.errors.count, "error")
+            prohibited this @signer from being saved:
+          %ul
+            - @signer.errors.full_messages.each do |message|
+              %li= message
+  .row
+    .form-group.col-sm-6
+      %p= f.label :name
+      = f.text_field :name, class: 'form-control'
+    .form-group.col-sm-6
+      %p= f.label :email
+      = f.text_field :email, class: 'form-control'
+    .form-group.col-sm-6
+      %p= f.label :last_name
+      = f.text_field :last_name, class: 'form-control'
+    .form-group.col-sm-6
+      %p= f.label :second_name
+      = f.text_field :second_name, class: 'form-control'
+    .form-group.col-sm-6
+      %p= f.label :tax_id
+      = f.text_field :tax_id, class: 'form-control'
+    .form-group.col-sm-6
+      %p= f.label :ce
+      = f.text_field :ce, class: 'form-control'
+    .form-group.col-sm-6
+      %p= f.label :ocr
+      = f.text_field :ocr, class: 'form-control'
+    .form-group.col-sm-6
+      %p= f.label :ne
+      = f.text_field :ne, class: 'form-control'
+
+  .actions.row
+    .col-sm-12
+      %button.btn.btn-info{:type => 'submit'} Enviar
