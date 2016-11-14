@@ -41,7 +41,8 @@ group :production do
 end
 
 group :development, :test do
-  gem 'byebug', platform: :mri # Console debugger
+  # Debugging on the console
+  gem 'pry-byebug'
 end
 
 group :test do
