@@ -16,6 +16,7 @@ class Petition < ApplicationRecord
     update_attribute(:published_at, Time.now.utc)
   end
 
+  # TODO: close document in mifiel.com
   def close
     update_attribute(:closed_at, Time.now.utc)
   end
@@ -53,22 +54,12 @@ class Petition < ApplicationRecord
     end
 
     def create_mifiel_document
-      path = "./tmp/#{encode_title}.txt"
-      File.open(path, 'w') { |f| f.write(text) }
-      callback_url = Rails.application.routes.url_helpers.petition_callback_url(
-        host: ENV['HOST'],
-        token: callback_token
-      )
-      document = Mifiel::Document.create(
-        file: path,
-        signatories: [],
-        callback_url: callback_url,
-        allow_infinite_signers: true
-      )
-      update_attribute(:widget_id, document.widget_id)
-    rescue RestClient::UnprocessableEntity => e
-      Rails.logger.error(e)
-      errors.add :base, JSON.parse(e.response)['errors']
-      false
+      service = CreateMifielDocument.new(callback_token)
+      doc = service.perform
+      if doc && doc.widget_id
+        update_attribute(:widget_id, doc.widget_id)
+      else
+        errors.add :base, service.errors
+      end
     end
 end
