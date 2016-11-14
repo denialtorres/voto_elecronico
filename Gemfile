@@ -20,6 +20,9 @@ gem 'mime-types', '~> 2.0'
 # requires activesupport 4.2 and conflicts with rails
 gem 'mifiel', git: 'git@github.com:Mifiel/ruby-api-client.git'
 
+gem 'bootstrap_form'
+
+gem 'rails-i18n', '~> 5.0.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

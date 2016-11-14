@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     post :close
     get :show_signers
     get :sign
+    get :signers, to: 'signers#new'
     resources :signers, only: [:create, :new]
   end
   patch 'petitions/:id/edit', to: 'petitions#update'

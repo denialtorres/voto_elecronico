@@ -12,6 +12,10 @@ class Signer < ApplicationRecord
             presence: true,
             on: :create
 
-  validates :tax_id, uniqueness: { scope: :petition_id, case_sensitive: false }
+  validates :tax_id, rfc: true, uniqueness: {
+    scope: :petition_id,
+    case_sensitive: false
+  }
   validates :signature, presence: :true, on: :sign
+  validates :email, email: true, allow_blank: true
 end
