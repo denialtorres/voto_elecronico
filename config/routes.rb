@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
   patch 'petitions/:id/edit', to: 'petitions#update'
   get 'petitions/private/:private_fragment', to: 'petitions#show', as: 'private_petition'
-  post 'services/mifiel', to: 'services#mifiel_callback'
+  post 'services/mifiel/:token', to: 'services#mifiel_callback', as: 'petition_callback'
 
   root to: 'petitions#index'
 end
