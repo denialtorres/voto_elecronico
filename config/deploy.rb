@@ -30,10 +30,6 @@ echo "-----> Loading environment for '#{stage.upcase}'"
   # Be sure to commit your .rbenv-version to your repository.
 end
 
-task jsonify_locales: :environment do
-  invoke 'rake[locales:to_json]'
-end
-
 # Put any custom mkdir's in here for when `mina setup` is ran.
 # For Rails apps, we'll make some of the shared paths that are shared between
 # all releases.
