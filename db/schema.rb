@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20161111181117) do
     t.datetime "updated_at",         null: false
     t.index ["certificate_number", "petition_id"], name: "index_signers_on_certificate_number_and_petition_id", unique: true, using: :btree
     t.index ["petition_id"], name: "index_signers_on_petition_id", using: :btree
-    t.index ["tax_id", "petition_id"], name: "index_signers_on_tax_id_and_petition_id", unique: true, using: :btree
+    t.index ["tax_id", "petition_id", "signed_at"], name: "index_signers_on_tax_id_and_petition_id_and_signed_at", unique: true, using: :btree
   end
 
 end

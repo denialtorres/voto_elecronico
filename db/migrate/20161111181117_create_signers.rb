@@ -19,6 +19,6 @@ class CreateSigners < ActiveRecord::Migration[5.0]
     end
 
     add_index :signers, [:certificate_number, :petition_id], unique: true
-    add_index :signers, [:tax_id, :petition_id], unique: true
+    add_index :signers, [:tax_id, :petition_id, :signed_at], unique: true
   end
 end
