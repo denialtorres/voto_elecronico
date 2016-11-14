@@ -63,6 +63,10 @@ class PetitionsController < ApplicationController
                 notice: 'Petición cerrada'
   end
 
+  def sign
+    @petition = Petition.find_by(public_fragment: params[:petition_id])
+  end
+
   # PATCH/PUT /petitions/1
   def update
     if @petition.update(petition_params)

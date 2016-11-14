@@ -1,0 +1,31 @@
+%h1 Firmar Petición
+%h3= @petition.title
+= link_to 'Regresar', root_path
+
+#mifiel-widget
+
+%script{type: 'text/javascript'}
+  window.mifiel=window.mifiel||[],function(){"use strict";for(var e=["widget"],i=function(e){return function(){window.mifiel.push([e].concat(Array.prototype.slice.call(arguments,0)))}},t=0;t<e.length;t++){var n=e[t];window.mifiel[n]||(window.mifiel[n]=i(n))}if(!document.getElementById("mifiel-js")){var r=document.createElement("script"),o=document.getElementsByTagName("script")[0];r.type="text/javascript",r.id="mifiel-js",r.async=!0,r.src="http://localhost:3001/sign-widget-v1.0.0.js",o.parentNode.insertBefore(r,o)}}();
+
+:javascript
+  window.mifiel.widget({
+    widgetId: '#{@petition.widget_id}',
+    appendTo: 'mifiel-widget',
+    successBtnText: 'Regresar a la petición'
+  });
+
+  window.addEventListener('message', function (e) {
+    // accept messages from known hosts only
+    // change to https://stageex.mifiel.com if necessary
+    if (e.origin !== 'https://www.mifiel.com') {
+      return;
+    }
+    // We will always send an object
+    if (typeof e.data !== 'object') {
+      return;
+    }
+    // document signed succesfully
+    if (e.data.eventType === 'mifiel.widget.success') {
+      window.location = '/petitions/#{@petition.public_fragment}'
+    }
+  });

@@ -13,7 +13,9 @@
       <%= link_to petition.title, petition_path(petition.public_fragment) %>
     </h3>
     <div class='text'><%= petition.text.slice(0, 200) + '...' %></div>
+    <%= link_to 'Firmar petición', petition_sign_path(petition.public_fragment) %>
     <% if Rails.env.development? %>
+      <br>
       <%= link_to 'private link', private_petition_path(petition.private_fragment) %>
     <% end %>
   <% end %>
