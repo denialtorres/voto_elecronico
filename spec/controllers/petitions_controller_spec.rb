@@ -23,137 +23,152 @@ RSpec.describe PetitionsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # Petition. As you add validations to Petition, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes) do
+    skip('Add a hash of attributes valid for your model')
+  end
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:invalid_attributes) do
+    skip('Add a hash of attributes invalid for your model')
+  end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # PetitionsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET #index" do
-    it "assigns all petitions as @petitions" do
+  describe 'GET #index' do
+    it 'assigns all petitions as @petitions' do
       petition = Petition.create! valid_attributes
-      get :index, params: {}, session: valid_session
+      get :index, params: {},
+          session: valid_session
       expect(assigns(:petitions)).to eq([petition])
     end
   end
 
-  describe "GET #show" do
-    it "assigns the requested petition as @petition" do
+  describe 'GET #show' do
+    it 'assigns the requested petition as @petition' do
       petition = Petition.create! valid_attributes
-      get :show, params: {id: petition.to_param}, session: valid_session
+      get :show, params: { id: petition.to_param },
+          session: valid_session
       expect(assigns(:petition)).to eq(petition)
     end
   end
 
-  describe "GET #new" do
-    it "assigns a new petition as @petition" do
-      get :new, params: {}, session: valid_session
+  describe 'GET #new' do
+    it 'assigns a new petition as @petition' do
+      get :new, params: {},
+          session: valid_session
       expect(assigns(:petition)).to be_a_new(Petition)
     end
   end
 
-  describe "GET #edit" do
-    it "assigns the requested petition as @petition" do
+  describe 'GET #edit' do
+    it 'assigns the requested petition as @petition' do
       petition = Petition.create! valid_attributes
-      get :edit, params: {id: petition.to_param}, session: valid_session
+      get :edit, params: { id: petition.to_param },
+          session: valid_session
       expect(assigns(:petition)).to eq(petition)
     end
   end
 
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new Petition" do
-        expect {
-          post :create, params: {petition: valid_attributes}, session: valid_session
-        }.to change(Petition, :count).by(1)
+  describe 'POST #create' do
+    context 'with valid params' do
+      it 'creates a new Petition' do
+        expect do
+          post :create, params: { petition: valid_attributes },
+               session: valid_session
+        end.to change(Petition, :count).by(1)
       end
 
-      it "assigns a newly created petition as @petition" do
-        post :create, params: {petition: valid_attributes}, session: valid_session
+      it 'assigns a newly created petition as @petition' do
+        post :create, params: { petition: valid_attributes },
+             session: valid_session
         expect(assigns(:petition)).to be_a(Petition)
         expect(assigns(:petition)).to be_persisted
       end
 
-      it "redirects to the created petition" do
-        post :create, params: {petition: valid_attributes}, session: valid_session
+      it 'redirects to the created petition' do
+        post :create, params: { petition: valid_attributes },
+             session: valid_session
         expect(response).to redirect_to(Petition.last)
       end
     end
 
-    context "with invalid params" do
-      it "assigns a newly created but unsaved petition as @petition" do
-        post :create, params: {petition: invalid_attributes}, session: valid_session
+    context 'with invalid params' do
+      it 'assigns a newly created but unsaved petition as @petition' do
+        post :create, params: { petition: invalid_attributes },
+             session: valid_session
         expect(assigns(:petition)).to be_a_new(Petition)
       end
 
       it "re-renders the 'new' template" do
-        post :create, params: {petition: invalid_attributes}, session: valid_session
-        expect(response).to render_template("new")
+        post :create, params: { petition: invalid_attributes },
+             session: valid_session
+        expect(response).to render_template('new')
       end
     end
   end
 
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested petition" do
-        petition = Petition.create! valid_attributes
-        put :update, params: {id: petition.to_param, petition: new_attributes}, session: valid_session
-        petition.reload
-        skip("Add assertions for updated state")
+  describe 'PUT #update' do
+    context 'with valid params' do
+      let(:new_attributes) do
+        skip('Add a hash of attributes valid for your model')
       end
 
-      it "assigns the requested petition as @petition" do
+      it 'updates the requested petition' do
         petition = Petition.create! valid_attributes
-        put :update, params: {id: petition.to_param, petition: valid_attributes}, session: valid_session
+        put :update, params: { id: petition.to_param, petition: new_attributes },
+            session: valid_session
+        petition.reload
+        skip('Add assertions for updated state')
+      end
+
+      it 'assigns the requested petition as @petition' do
+        petition = Petition.create! valid_attributes
+        put :update, params: { id: petition.to_param, petition: valid_attributes },
+            session: valid_session
         expect(assigns(:petition)).to eq(petition)
       end
 
-      it "redirects to the petition" do
+      it 'redirects to the petition' do
         petition = Petition.create! valid_attributes
-        put :update, params: {id: petition.to_param, petition: valid_attributes}, session: valid_session
+        put :update, params: { id: petition.to_param, petition: valid_attributes },
+            session: valid_session
         expect(response).to redirect_to(petition)
       end
     end
 
-    context "with invalid params" do
-      it "assigns the petition as @petition" do
+    context 'with invalid params' do
+      it 'assigns the petition as @petition' do
         petition = Petition.create! valid_attributes
-        put :update, params: {id: petition.to_param, petition: invalid_attributes}, session: valid_session
+        put :update, params: { id: petition.to_param, petition: invalid_attributes },
+            session: valid_session
         expect(assigns(:petition)).to eq(petition)
       end
 
       it "re-renders the 'edit' template" do
         petition = Petition.create! valid_attributes
-        put :update, params: {id: petition.to_param, petition: invalid_attributes}, session: valid_session
-        expect(response).to render_template("edit")
+        put :update, params: { id: petition.to_param, petition: invalid_attributes },
+            session: valid_session
+        expect(response).to render_template('edit')
       end
     end
   end
 
-  describe "DELETE #destroy" do
-    it "destroys the requested petition" do
+  describe 'DELETE #destroy' do
+    it 'destroys the requested petition' do
       petition = Petition.create! valid_attributes
-      expect {
-        delete :destroy, params: {id: petition.to_param}, session: valid_session
-      }.to change(Petition, :count).by(-1)
+      expect do
+        delete :destroy, params: { id: petition.to_param },
+               session: valid_session
+      end.to change(Petition, :count).by(-1)
     end
 
-    it "redirects to the petitions list" do
+    it 'redirects to the petitions list' do
       petition = Petition.create! valid_attributes
-      delete :destroy, params: {id: petition.to_param}, session: valid_session
+      delete :destroy, params: { id: petition.to_param },
+             session: valid_session
       expect(response).to redirect_to(petitions_url)
     end
   end
-
 end

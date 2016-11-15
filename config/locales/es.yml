@@ -1,0 +1,18 @@
+es:
+  activerecord:
+    attributes:
+      signer:
+        name: Nombre
+        last_name: Apellido Paterno
+        second_name: Apellido Materno
+        tax_id: RFC
+        ce: Clave de Elector
+        ne: Número de Emisión
+        ocr: OCR
+    errors:
+      models:
+        signer:
+          attributes:
+            tax_id:
+              rfc: El RFC no es válido
+              taken: Ya ha firmado la petición

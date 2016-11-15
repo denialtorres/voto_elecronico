@@ -12,6 +12,9 @@ module VotoElectronico
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+    config.i18n.default_locale = :es
+    config.i18n.available_locales = [:es, :en]
+
     # Sane logs through lograge
     config.lograge.enabled = true
     config.lograge.custom_options = lambda { |event|
@@ -36,5 +39,8 @@ module VotoElectronico
       end
       opts
     }
+
+    # Host for generates URLs on emails
+    config.action_mailer.default_url_options = { host: ENV['HOST'] }
   end
 end

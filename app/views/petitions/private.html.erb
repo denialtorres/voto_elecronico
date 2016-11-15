@@ -1,41 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<h2>This page shows private information</h2>
+<div id="content">
+  <% unless @petition.closed? %>
+    <%= link_to 'Cerrar', petition_close_path(@petition.private_fragment), method: :post %>
+  <% end %>
+  <% unless @petition.published? %>
+    <%= link_to 'Publicar', petition_publish_path(@petition.private_fragment), method: :post %>
+  <% end %>
+  <!-- TODO: Put status of the petition (publicada, cerrada) -->
+  <%= render 'info' %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @petition.title %>
-</p>
+  <p>
+    <strong>Creator email:</strong>
+    <%= @petition.creator_email %>
+  </p>
 
-<p>
-  <strong>Text:</strong>
-  <%= @petition.text %>
-</p>
+  <p>
+    Este es el link que tienes que compartir para que la gente firme tu petición, compártelo con quién tu quieras.<br />
+    <strong>Link Público: <%= petition_path(@petition.public_fragment) %></strong>
+  </p>
 
-<p>
-  <strong>Creator name:</strong>
-  <%= @petition.creator_name %>
-</p>
+  <p>
+   El siguiente es el link para que puedas monitorear el avance de tu petición y bajar la lista de firmantes. No compartas este link con nadie.<br />
+    <strong>Link Privado: <%= private_petition_path(@petition.private_fragment) %></strong>
+  </p>
 
-<p>
-  <strong>Creator email:</strong>
-  <%= @petition.creator_email %>
-</p>
-
-<p>
-  <strong>Private fragment:</strong>
-  <%= @petition.private_fragment %>
-</p>
-
-<p>
-  <strong>Public fragment:</strong>
-  <%= @petition.public_fragment %>
-</p>
-
-<p>
-  <strong>Callback token:</strong>
-  <%= @petition.callback_token %>
-</p>
-
-<%= link_to 'Edit', edit_petition_path(@petition) %> |
-<%= link_to 'Back', petitions_path %>
+  <% if @petition.published? %>
+    <%= link_to 'Ver firmantes', petition_show_signers_path(@petition.private_fragment) %> |
+  <% else %>
+    <%= link_to 'Edit', edit_petition_path(@petition.private_fragment) %> |
+  <% end %>
+  <%= link_to 'Back', root_path %>
+</div>

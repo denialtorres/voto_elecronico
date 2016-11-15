@@ -25,13 +25,13 @@ clearing :on
 # and, you'll have to watch "config/Guardfile" instead of "Guardfile"
 
 guard 'livereload' do
-  watch(%r{app/views/.+\.(erb|html)$})
+  watch(%r{app/views/.+\.(erb|html|haml)$})
   watch(%r{app/helpers/.+\.rb})
   watch(%r{app/admin/.+\.rb})
   watch('app/models/ability.rb')
   # watch(%r{app/models/.+\.rb})
-  # watch(%r{app/controllers/.+\.rb})
-  watch(%r{public/.+\.(css|js|html)})
+  watch(%r{app/controllers/.+\.rb})
+  watch(%r{public/.+\.(css|js|html|haml)})
   watch(%r{config/locales/.+\.yml})
   # watch(%r{spec/javascripts/.+\.js})
   watch(%r{spec/javascripts/.+\.js\.coffee})

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161108035557) do
+ActiveRecord::Schema.define(version: 20161111181117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,11 +23,36 @@ ActiveRecord::Schema.define(version: 20161108035557) do
     t.string   "private_fragment", null: false
     t.string   "public_fragment",  null: false
     t.string   "callback_token",   null: false
+    t.string   "widget_id"
+    t.datetime "deleted_at"
+    t.datetime "published_at"
+    t.datetime "closed_at"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.index ["callback_token"], name: "index_petitions_on_callback_token", unique: true, using: :btree
     t.index ["private_fragment"], name: "index_petitions_on_private_fragment", unique: true, using: :btree
     t.index ["public_fragment"], name: "index_petitions_on_public_fragment", unique: true, using: :btree
+  end
+
+  create_table "signers", force: :cascade do |t|
+    t.integer  "petition_id",        null: false
+    t.string   "name",               null: false
+    t.string   "email",              null: false
+    t.string   "last_name",          null: false
+    t.string   "second_name",        null: false
+    t.string   "tax_id",             null: false
+    t.string   "certificate_number"
+    t.string   "ce",                 null: false
+    t.string   "ocr",                null: false
+    t.string   "ne",                 null: false
+    t.string   "signature"
+    t.datetime "signed_at"
+    t.string   "tiwtter"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["certificate_number", "petition_id"], name: "index_signers_on_certificate_number_and_petition_id", unique: true, using: :btree
+    t.index ["petition_id"], name: "index_signers_on_petition_id", using: :btree
+    t.index ["tax_id", "petition_id", "signed_at"], name: "index_signers_on_tax_id_and_petition_id_and_signed_at", unique: true, using: :btree
   end
 
 end
