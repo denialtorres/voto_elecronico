@@ -33,6 +33,13 @@ class PetitionsController < ApplicationController
     @petition = Petition.new
   end
 
+  #GET /petitions/private/show_signers
+  def show_signers
+    respond_to do |format|
+      format.html
+      format.csv { send_data @petition.signers.to_csv, filename: "peticion-#{@petition.title}.csv" }
+    end
+  end
   # GET /petitions/1/edit
   def edit
     @url = { id: @petition.private_fragment }

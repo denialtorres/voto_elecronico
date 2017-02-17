@@ -13,6 +13,6 @@
           %td= signer.tax_id
           %td= signer.signature ? 'si' : 'no'
 %br/
-= link_to 'Descargar Firmantes', private_petition_path(@petition.private_fragment)
+= link_to "Descargar Firmantes", url_for(:format => "csv")
 |
 = link_to 'Regresar a la petición', private_petition_path(@petition.private_fragment)
