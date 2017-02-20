@@ -37,7 +37,8 @@ class PetitionsController < ApplicationController
   def show_signers
     respond_to do |format|
       format.html
-      format.csv { send_data @petition.signers.to_csv, filename: "peticion-#{@petition.title}.csv" }
+      format.csv { send_data @petition.signers.to_csv,
+          filename: "peticion-#{@petition.title}.csv" }
     end
   end
   # GET /petitions/1/edit
