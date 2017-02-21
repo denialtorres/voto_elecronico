@@ -19,13 +19,21 @@
     </div>
     <%= link_to 'Firmar petición', new_petition_signer_path(petition_id: petition.public_fragment), class: 'btn btn-success' %>
 
-    <% if Rails.env.development? %>
+    <% if Rails.env.development? || Rails.env.test? %>
       <br>
       <%= link_to 'private link', private_petition_path(petition.private_fragment) %>
     <% end %>
   <% end %>
   </div>
 </div>
+
+ <!--<% @petitions.each do |article| %>-->
+ <!--   <div class="well well-lg">-->
+ <!--     <div class="article-title">-->
+ <!--       <%= link_to article.title, petition_path(article.public_fragment) %>-->
+ <!--     </div>-->
+ <!--   </div>-->
+ <!-- <% end %>-->
 
 <% if @petitions.count > 5 %>
   <div class="row">
