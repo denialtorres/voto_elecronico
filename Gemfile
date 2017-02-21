@@ -55,6 +55,7 @@ group :test do
   gem 'rspec-rails', '~> 3.5' # Rails test framework
   gem 'webmock' # Stubbing and expectations on HTTP requests.
   gem 'simplecov', require: false # Code coverage for Ruby
+  gem 'capybara', '2.7.1'
 end
 
 group :development do

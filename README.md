@@ -29,3 +29,21 @@ run `rspec spec`
 
 run `mina deploy`
 
+
+Testing -
+
+Unit Test
+  - models, views, routes etc
+  - each individual component is tested one item at time
+  - typically results in very good coverage
+
+Functional Test (Its part of integration test)
+  - controllers
+  - testing multiple components and how they collaborate with each other
+  - multiple models in process
+
+Integration Test
+  - Integration test is when a business process is followed to 
+  completion to meet a business objetive
+  - Typically Involves emulating a user, for example loggin in
+  and clicking on a purchase button or links etc
