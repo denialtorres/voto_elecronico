@@ -15,7 +15,7 @@ RSpec.feature 'Download a CSV table of the signers' do
     # visit root page
     visit '/'
       expect(page).to have_content('private link')
-      click_link('private link', :match => :first)
+      click_link('private link', match: :first)
       click_link 'Ver firmantes'
       click_link 'Descargar Firmantes'
       page.response_headers['Content-Type'].should == 'text/csv'
