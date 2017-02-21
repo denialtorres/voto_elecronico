@@ -23,18 +23,20 @@ class Signer < ApplicationRecord
       return true unless Signer.where(
         tax_id: tax_id,
         petition: petition
-      ).where.not(signed_at: nil).count > 0
+      ).where.not(signed_at: nil).count.positive?
       errors.add(:tax_id, 'Ya ha firmado la petición')
     end
 
-  def self.to_csv
-      attributes_headers = %w{id NOMBRE PRIMER_APELLIDO SEGUNDO_APELLIDO CORREO RFC }
-      attributes_colums = %w{id name last_name second_name email tax_id }
-    CSV.generate(headers: true) do |csv|
+  class << self
+    def to_csv
+      attributes_headers = %w(NOMBRE PRIMER_APELLIDO SEGUNDO_APELLIDO CORREO RFC)
+      attributes_colums = %w(name last_name second_name email tax_id)
+      CSV.generate(headers: true) do |csv|
         csv << attributes_headers
-        all.each do |signer|
-          csv << attributes_colums.map{|attr| signer.send(attr)}
-        end
+          all.find_each do |signer|
+            csv << attributes_colums.map { |attr| signer.send(attr) }
+          end
+      end
     end
   end
 end

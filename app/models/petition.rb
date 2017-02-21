@@ -33,7 +33,6 @@ class Petition < ApplicationRecord
     clean_title.tr(' ', '-').slice(0, 49).chomp('-').downcase
   end
 
-
   private
 
     def clean_title

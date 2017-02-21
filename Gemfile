@@ -17,7 +17,7 @@ gem 'haml' # HTML Abstraction Markup Language - A Markup Haiku
 gem 'mime-types', '~> 2.0'
 # install mifiel from source since rubygems for some reason
 # requires activesupport 4.2 and conflicts with rails
-gem 'mifiel' , git: 'https://github.com/Mifiel/ruby-api-client.git'
+gem 'mifiel', git: 'https://github.com/Mifiel/ruby-api-client.git'
 
 gem 'bootstrap_form'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]

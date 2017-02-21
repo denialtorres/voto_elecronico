@@ -1,6 +1,6 @@
 require_relative 'boot'
 
-#to generate the csv tables
+# to generate the csv tables
 require 'csv'
 
 require 'rails/all'
