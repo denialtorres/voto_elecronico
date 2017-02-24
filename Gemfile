@@ -21,7 +21,6 @@ gem 'mifiel', git: 'https://github.com/Mifiel/ruby-api-client.git'
 
 gem 'bootstrap_form'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
-gem 'sqlite3'
 
 gem 'rails-i18n', '~> 5.0.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
