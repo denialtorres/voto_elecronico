@@ -48,6 +48,7 @@ end
 group :development, :test do
   # Debugging on the console
   gem 'pry-byebug'
+  gem "rails-erd" #to generate erd diagrams in pdf
 
 end
 
