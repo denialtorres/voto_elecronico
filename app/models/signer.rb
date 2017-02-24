@@ -33,9 +33,9 @@ class Signer < ApplicationRecord
       attributes_colums = %w(name last_name second_name email tax_id)
       CSV.generate(headers: true) do |csv|
         csv << attributes_headers
-          all.find_each do |signer|
-            csv << attributes_colums.map { |attr| signer.send(attr) }
-          end
+        all.find_each do |signer|
+          csv << attributes_colums.map { |attr| signer.send(attr) }
+        end
       end
     end
   end
