@@ -19,12 +19,12 @@ gem 'mime-types', '~> 2.0'
 # install mifiel from source since rubygems for some reason
 # requires activesupport 4.2 and conflicts with rails
 gem 'mifiel', git: 'https://github.com/Mifiel/ruby-api-client.git'
-
 gem 'bootstrap_form'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 gem 'sqlite3'
 
 gem 'rails-i18n', '~> 5.0.0'
+gem 'image-picker-rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

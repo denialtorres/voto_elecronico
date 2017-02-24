@@ -1,3 +1,7 @@
+
+
+
+
 <%= form_for(petition, url: @url) do |f| %>
   <% if petition.errors.any? %>
     <div id="error_explanation">
@@ -10,6 +14,8 @@
       </ul>
     </div>
   <% end %>
+
+ <%= f.hidden_field :image_preview, :id => "hiddenRating" %>
 
   <div class="form-group">
     <p><%= f.label :title, 'Titulo' %></p>
@@ -28,9 +34,60 @@
   <div class="form-group">
     <%= f.label :creator_email, 'Tu correo electrónico o de la organización a la que representas'  %>
     <%= f.text_field :creator_email, class: 'form-control' %>
-  </div>
+    
+     
+<div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="text-center text-primary">Team</h1>
+                        <p class="text-center">We are a group of skilled individuals.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="image-picker__element" id="1">
+                          <img src="http://i.imgur.com/xckFGCK.jpg" class="center-block img-responsive">
+                        </div>
+                        <h3 class="text-center">John Doe</h3>
+                        <p class="text-center">Developer</p>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="image-picker__element" id="2">
+                        <img src="http://i.imgur.com/fgWgCym.jpg" class="center-block img-responsive">
+                      </div>
+                        <h3 class="text-center">John Doe</h3>
+                        <p class="text-center">Developer</p>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="image-picker__element" id="377" >
+                        <img src="http://i.imgur.com/7Dqnolz.jpg" class="center-block img-responsive">
+                      </div
+                        <h3 class="text-center">John Doe</h3>
+                        <p class="text-center">Developer</p>
+                    </div>
+                </div>
+            </div>
+        </div>  
+   
+ <script>
+    $('.image-picker__element').click(function(e){
+    console.log($(this).attr( "id" ))
+    var imagen_id = $(this).attr( "id" )
+    $('.image-picker__element--selected').removeClass('image-picker__element--selected');
+    $(e.target).closest('.image-picker__element').addClass('image-picker__element--selected');
+    $('.image-picker__input').val(e.target.src);  
+    $('#hiddenRating').val(imagen_id);
+    console.log($('#hiddenRating').val());
+  });
+  
+  </script>
+  
 
   <div class="actions">
     <button class="btn btn-info" type="submit">Enviar</button>
   </div>
 <% end %>
+
+ 
+  

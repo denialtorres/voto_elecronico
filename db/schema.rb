@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161111181117) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20170224071049) do
 
   create_table "petitions", force: :cascade do |t|
     t.string   "title",            null: false
@@ -29,9 +26,10 @@ ActiveRecord::Schema.define(version: 20161111181117) do
     t.datetime "closed_at"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.index ["callback_token"], name: "index_petitions_on_callback_token", unique: true, using: :btree
-    t.index ["private_fragment"], name: "index_petitions_on_private_fragment", unique: true, using: :btree
-    t.index ["public_fragment"], name: "index_petitions_on_public_fragment", unique: true, using: :btree
+    t.integer  "image_preview"
+    t.index ["callback_token"], name: "index_petitions_on_callback_token", unique: true
+    t.index ["private_fragment"], name: "index_petitions_on_private_fragment", unique: true
+    t.index ["public_fragment"], name: "index_petitions_on_public_fragment", unique: true
   end
 
   create_table "signers", force: :cascade do |t|
@@ -50,9 +48,9 @@ ActiveRecord::Schema.define(version: 20161111181117) do
     t.string   "tiwtter"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.index ["certificate_number", "petition_id"], name: "index_signers_on_certificate_number_and_petition_id", unique: true, using: :btree
-    t.index ["petition_id"], name: "index_signers_on_petition_id", using: :btree
-    t.index ["tax_id", "petition_id", "signed_at"], name: "index_signers_on_tax_id_and_petition_id_and_signed_at", unique: true, using: :btree
+    t.index ["certificate_number", "petition_id"], name: "index_signers_on_certificate_number_and_petition_id", unique: true
+    t.index ["petition_id"], name: "index_signers_on_petition_id"
+    t.index ["tax_id", "petition_id", "signed_at"], name: "index_signers_on_tax_id_and_petition_id_and_signed_at", unique: true
   end
 
 end
