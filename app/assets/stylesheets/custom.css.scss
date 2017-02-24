@@ -1,0 +1,20 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+span#question-icon {
+  color: #02B875 !important;
+  font-size: 135%;
+    text-decoration:none;
+  border:0;
+  outline:none;
+}
+
+div#ife-modal {
+  width: 60%;
+}
+
+.icon-question-class:active, 
+.icon-question-class:focus, 
+.icon-question-class:hover{   
+    outline:none !important;
+}

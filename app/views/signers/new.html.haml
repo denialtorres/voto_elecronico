@@ -2,28 +2,50 @@
 %h3= @petition.title
 = link_to 'Regresar', root_path
 
-= bootstrap_form_for(@signer, url: @url) do |f|
+
+= form_for(@signer, url: @url) do |f|
   .row
     .form-group.col-sm-6
+      = f.label :name
       = f.text_field :name, class: 'form-control'
     .form-group.col-sm-6
+      = f.label :last_name
       = f.text_field :last_name, class: 'form-control'
   .row
     .form-group.col-sm-6
+      = f.label :second_name
       = f.text_field :second_name, class: 'form-control'
     .form-group.col-sm-6
-      = f.email_field :email, class: 'form-control'
-  .row
-    .form-group.col-sm-6
+      = f.label :tax_id
       = f.text_field :tax_id, class: 'form-control'
-    .form-group.col-sm-6
-      = f.text_field :ce, class: 'form-control'
   .row
     .form-group.col-sm-6
-      = f.text_field :ocr, class: 'form-control'
+      = f.label :ce
+      .input-group
+        = f.text_field :ce, class: 'form-control', placeholder: 'Da click en el icono de la derecha para encontrar tu Clave de Elector'
+        %span#start-date.input-group-addon
+          = link_to '#', class: "icon-question-class", data: {toggle: "modal", target: "#modal"} do
+            %span#question-icon.glyphicon.glyphicon-question-sign
     .form-group.col-sm-6
-      = f.text_field :ne, class: 'form-control'
+      = f.label :ocr
+      .input-group
+        = f.text_field :ocr, class: 'form-control', placeholder: 'Da click en el icono de la derecha para encontrar tu OCR'
+        %span#start-date.input-group-addon
+          = link_to '#', class: "icon-question-class", data: {toggle: "modal", target: "#modal"} do
+            %span#question-icon.glyphicon.glyphicon-question-sign
+  .row
+    .form-group.col-sm-6
+      = f.label :ne
+      .input-group
+        = f.text_field :ne, class: 'form-control', placeholder: 'Da click en el icono de la derecha para encontrar Número de Emisión'
+        %span#start-date.input-group-addon
+          = link_to '#', class: "icon-question-class", data: {toggle: "modal", target: "#modal"} do
+            %span#question-icon.glyphicon.glyphicon-question-sign
 
   .actions.row
     .col-sm-12
       %button.btn.btn-info{:type => 'submit'} Enviar
+
+#modal.modal.fade
+  =render 'ife'
+  
