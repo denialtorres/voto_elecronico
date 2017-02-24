@@ -11,7 +11,7 @@ RSpec.feature 'Show a modal with the IFE instructions when a user click on more 
        published_at: Time.now.utc)
   end
 
-  scenario 'A user can download a CSV table with the signers of his petition' do
+  scenario 'A user can see a modal when he clicks in the question mark icon' do
     # visit root page
     visit '/'
       expect(page).to have_content('Firmar petición')
