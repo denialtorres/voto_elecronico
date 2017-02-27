@@ -10,7 +10,7 @@ class Petition < ApplicationRecord
 
   validates :text, length: { minimum: 60 }, presence: true
   validates :title, presence: true
-
+  # rubocop:disable SkipsModelValidations
   def publish
     return false unless create_mifiel_document
     update_attribute(:published_at, Time.now.utc)
@@ -20,6 +20,7 @@ class Petition < ApplicationRecord
   def close
     update_attribute(:closed_at, Time.now.utc)
   end
+  # rubocop:enale SkipsModelValidations
 
   def published?
     published_at.present?

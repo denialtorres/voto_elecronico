@@ -52,12 +52,11 @@ class PetitionsController < ApplicationController
   # POST /petitions
   def create
     @petition = Petition.new(petition_params)
-    if @petition.image_preview.blank?
+    @petition.image_preview.blank?
      @petition.image_preview = 1
-    end
-        
+
     if @petition.save
-      #PetitionMailer.petition_successfully_created(@petition.id).deliver_now
+      # PetitionMailer.petition_successfully_created(@petition.id).deliver_now
       redirect_to private_petition_path(@petition.private_fragment),
                   notice: 'Petition was successfully created.'
     else
@@ -113,6 +112,7 @@ class PetitionsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def petition_params
-      params.require(:petition).permit(:title, :text, :creator_name, :creator_email, :image_preview)
+      params.require(:petition).permit(:title, :text, :creator_name, :creator_email,
+                                       :image_preview)
     end
 end
