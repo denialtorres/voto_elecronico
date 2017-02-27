@@ -36,7 +36,8 @@ class SignersController < ApplicationController
         :tax_id,
         :ce,
         :ocr,
-        :ne
+        :ne,
+        :tiwtter
       )
     end
 end
