@@ -18,13 +18,36 @@ class PetitionsController < ApplicationController
   # GET /petitions/private/:private_fragment
   def show
     page = 'show'
+    
+    
     if request.path =~ %r{\/private\/}
       @petition = Petition.find_by(private_fragment: params[:private_fragment])
       page = 'private'
     else
       @petition = Petition.find_by(public_fragment: params[:id])
     end
-
+    
+      set_meta_tags title: @petition.title,
+            site: 'Cat Blog',
+            reverse: true,
+            description: @petition.text, 
+            twitter: {
+              card: "summary",
+              site: "@voto_electronico",
+              title: @petition.title,
+              description:  @petition.text,
+              image: 'http://i.imgur.com/7Dqnolz.jpg'
+            },
+            og: {
+              title:    @petition.title,
+              description: @petition.text,
+              type:     'website',
+              image:    'http://i.imgur.com/7Dqnolz.jpg'
+            },
+            alternate: [
+              { href: 'http://example.fr/base/url', hreflang: 'fr' },
+              { href: 'http://example.com/feed.rss', type: 'application/rss+xml', title: 'RSS' }
+            ]
     render page
   end
 
