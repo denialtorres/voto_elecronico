@@ -1,6 +1,6 @@
 require_relative 'boot'
 
-# to generate the csv tables
+#I get error uninitialized constant CSV when I dont used it
 require 'csv'
 
 require 'rails/all'
