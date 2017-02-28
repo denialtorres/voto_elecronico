@@ -3,6 +3,5 @@
 <div id="content">
   <%= render 'info' %>
 
-  <%= link_to 'Firmar petición', new_petition_signer_path(petition_id: @petition.public_fragment) %>
+  <%= link_to 'Firmar petición', new_petition_signer_path(petition_id: @petition.public_fragment), class: 'btn btn-success' %>
 </div>
-

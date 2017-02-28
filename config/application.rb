@@ -1,5 +1,8 @@
 require_relative 'boot'
 
+#I get error uninitialized constant CSV when I dont used it
+require 'csv'
+
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems

@@ -17,9 +17,10 @@ gem 'haml' # HTML Abstraction Markup Language - A Markup Haiku
 gem 'mime-types', '~> 2.0'
 # install mifiel from source since rubygems for some reason
 # requires activesupport 4.2 and conflicts with rails
-gem 'mifiel', git: 'git@github.com:Mifiel/ruby-api-client.git'
+gem 'mifiel', git: 'https://github.com/Mifiel/ruby-api-client.git'
 
 gem 'bootstrap_form'
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
 gem 'rails-i18n', '~> 5.0.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -45,6 +46,7 @@ end
 group :development, :test do
   # Debugging on the console
   gem 'pry-byebug'
+
 end
 
 group :test do
@@ -52,6 +54,7 @@ group :test do
   gem 'rspec-rails', '~> 3.5' # Rails test framework
   gem 'webmock' # Stubbing and expectations on HTTP requests.
   gem 'simplecov', require: false # Code coverage for Ruby
+  gem 'capybara', '2.7.1'
 end
 
 group :development do

@@ -12,21 +12,21 @@
   <% end %>
 
   <div class="form-group">
-    <p><%= f.label :title %></p>
+    <p><%= f.label :title, 'Titulo' %></p>
     <%= f.text_field :title, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <p><%= f.label :text %></p>
+    <p><%= f.label :text, 'Descripción de tu petición' %></p>
     <%= f.text_area :text, class: 'form-control', rows: 12 %>
   </div>
 
   <div class="form-group">
-    <%= f.label :creator_name %>
+    <%= f.label :creator_name, 'Tu nombre o nombre de la organización a la que representas' %>
     <%= f.text_field :creator_name, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :creator_email %>
+    <%= f.label :creator_email, 'Tu correo electrónico o de la organización a la que representas'  %>
     <%= f.text_field :creator_email, class: 'form-control' %>
   </div>
 
