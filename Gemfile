@@ -13,6 +13,7 @@ gem 'haml' # HTML Abstraction Markup Language - A Markup Haiku
 gem 'image-picker-rails'
 gem 'jquery-rails' # Use jquery as the JavaScript library
 gem 'lograge' # Less spammy logging
+gem 'meta-tags'
 gem 'mime-types', '~> 2.0'
 gem 'sass-rails', '~> 5.0' # Use SCSS for stylesheets
 gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
