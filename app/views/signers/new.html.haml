@@ -41,11 +41,12 @@
         %span#start-date.input-group-addon
           = link_to '#', class: "icon-question-class", data: {toggle: "modal", target: "#modal"} do
             %span#question-icon.glyphicon.glyphicon-question-sign
-
+    .form-group.col-sm-6
+      = f.label :tiwtter, 'Twitter'
+      = f.text_field :tiwtter, class: 'form-control', placeholder: 'Opcional'
   .actions.row
     .col-sm-12
       %button.btn.btn-info{:type => 'submit'} Enviar
 
 #modal.modal.fade
   =render 'ife'
-  
