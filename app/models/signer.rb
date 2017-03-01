@@ -29,8 +29,10 @@ class Signer < ApplicationRecord
 
   class << self
     def to_csv
-      attributes_headers = %w(NOMBRE PRIMER_APELLIDO SEGUNDO_APELLIDO CORREO RFC CE OCR NE SIGNATURE SIGNED_AT TWITTER)
-      attributes_colums = %w(name last_name second_name email tax_id ce ocr ne signature signed_at tiwtter)
+      attributes_headers = %w(NOMBRE PRIMER_APELLIDO SEGUNDO_APELLIDO CORREO RFC CE OCR
+                              NE SIGNATURE SIGNED_AT TWITTER)
+      attributes_colums = %w(name last_name second_name email tax_id ce ocr ne signature
+                             signed_at tiwtter)
       CSV.generate(headers: true) do |csv|
         csv << attributes_headers
         all.find_each do |signer|
