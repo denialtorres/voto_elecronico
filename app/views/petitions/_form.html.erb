@@ -1,12 +1,7 @@
-
-
-
-
 <%= form_for(petition, url: @url) do |f| %>
   <% if petition.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(petition.errors.count, "error") %> prohibited this petition from being saved:</h2>
-
       <ul>
       <% petition.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -34,8 +29,8 @@
   <div class="form-group">
     <%= f.label :creator_email, 'Tu correo electrónico o de la organización a la que representas'  %>
     <%= f.text_field :creator_email, class: 'form-control' %>
-    
-     
+
+
 <div class="section">
             <div class="container">
                 <div class="row">
@@ -47,44 +42,38 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="image-picker__element" id="1">
-                          <img src="http://i.imgur.com/xckFGCK.jpg" class="center-block img-responsive">
+                          <%= image_tag("/assets/images/imagen_1.jpg", class: "center-block img-responsive") %>
                         </div>
                         <h3 class="text-center">Imagen 1</h3>
                     </div>
                     <div class="col-md-4">
                       <div class="image-picker__element" id="2">
-                        <img src="http://i.imgur.com/fgWgCym.jpg" class="center-block img-responsive">
+                        <%= image_tag("/assets/images/imagen_2.jpg", class: "center-block img-responsive") %>
                       </div>
                         <h3 class="text-center">Imagen 2</h3>
                     </div>
                     <div class="col-md-4">
                       <div class="image-picker__element" id="377" >
-                        <img src="http://i.imgur.com/7Dqnolz.jpg" class="center-block img-responsive">
+                        <%= image_tag("/assets/images/imagen_3.jpg", class: "center-block img-responsive") %>
                       </div>
                         <h3 class="text-center">Imagen 3</h3>
                     </div>
                 </div>
             </div>
-        </div>  
-   
- <script>
-    $('.image-picker__element').click(function(e){
-    console.log($(this).attr( "id" ))
-    var imagen_id = $(this).attr( "id" )
-    $('.image-picker__element--selected').removeClass('image-picker__element--selected');
-    $(e.target).closest('.image-picker__element').addClass('image-picker__element--selected');
-    $('.image-picker__input').val(e.target.src);  
-    $('#hiddenRating').val(imagen_id);
-    console.log($('#hiddenRating').val());
+        </div>
+
+<script>
+  $('.image-picker__element').click(function(e){
+      var imagen_id = $(this).attr( "id" )
+      $('.image-picker__element--selected').removeClass('image-picker__element--selected');
+      $(e.target).closest('.image-picker__element').addClass('image-picker__element--selected');
+      $('.image-picker__input').val(e.target.src);
+      $('#hiddenRating').val(imagen_id);
   });
-  
-  </script>
-  
+</script>
+
 
   <div class="actions">
     <button class="btn btn-info" type="submit">Enviar</button>
   </div>
 <% end %>
-
- 
-  

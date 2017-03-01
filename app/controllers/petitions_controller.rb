@@ -121,10 +121,10 @@ class PetitionsController < ApplicationController
       set_meta_tags title: petition.title,
                 site: 'Voto Electronico',
                 reverse: true,
-                description: petition.text, 
+                description: petition.text,
                 twitter: {
-                  card: "summary",
-                  site: "@voto_electronico",
+                  card: 'summary',
+                  site: '@voto_electronico',
                   title: petition.title,
                   description:  petition.text,
                   image: "/assets/images/imagen_#{petition.image_preview}.jpg"
