@@ -14,6 +14,11 @@ AllCops:
   Exclude:
     - 'spec/controllers/regression/**/*'
     - 'spec/models/regression/**/*'
+    - 'spec/routing/*'
+    - 'spec/views/**/*'
+    - 'spec/controllers/*'
+    - 'spec/*'
+    - 'config/**/*'
     - 'node_modules/**/*'
     - 'bin/**/*'
     - 'db/**/*'
